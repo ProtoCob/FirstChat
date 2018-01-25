@@ -3,7 +3,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-app.set('port', (process.env.PORT || 5000))
+//hard set port
+//app.set('port', (process.env.PORT || 5000))
+app.listen(process.env.PORT || 3000, function () {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
